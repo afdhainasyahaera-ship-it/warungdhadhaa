@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Warung DHA-DHA — Rasa dan Kenangan</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <!-- ======================= CSS ======================= -->
+  <style>
+    :root{
+      --bg:#f7f6f4;
+      --card:#ffffff;
+      --accent:#056d47;
+      --muted:#6b6b6b;
+      --radius:12px;
+      --maxW:1100px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:Inter,system-ui,Segoe UI,Roboto,"Helvetica Neue",Arial;
+      background:linear-gradient(180deg,var(--bg),#efefef);
+      color:#222;
+      padding:32px 16px;
+      display:flex;justify-content:center;
+    }
+    .wrapper{width:100%;max-width:var(--maxW);}
+    header{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px}
+    .brand{display:flex;gap:14px;align-items:center}
+    .logo{
+      width:64px;height:64px;border-radius:12px;background:linear-gradient(135deg,#fff 0%,#f3f3f3 100%);
+      display:flex;align-items:center;justify-content:center;font-weight:700;color:var(--accent);
+      box-shadow:0 6px 18px rgba(0,0,0,0.06)
+    }
+    nav{display:flex;gap:14px;align-items:center}
+    nav a, nav button{
+      padding:10px 14px;
+      border-radius:10px;
+      text-decoration:none;
+      font-weight:600;
+      border:none;
+      cursor:pointer;
+      background:transparent;
+    }
+    nav a{color:#333}
+    nav a.cta{background:var(--accent);color:white}
+
+    .hero{
+      background:var(--card);padding:28px;border-radius:var(--radius);
+      box-shadow:0 10px 30px rgba(20,20,20,0.06);
+      display:grid;grid-template-columns:1fr 380px;gap:24px;align-items:center;margin-bottom:22px
+    }
+    .hero h2{margin:0 0 8px 0;font-size:28px}
+    .hero p{margin:0 0 14px;color:var(--muted)}
+    .btn-row{display:flex;gap:10px}
+    .btn{padding:10px 14px;border-radius:10px;text-decoration:none;font-weight:600}
+    .btn.primary{background:var(--accent);color:white}
+    .btn.ghost{border:1px solid #e6e6e6;background:transparent;color:#333}
+
+    .hero-card{background:linear-gradient(180deg,#fff,#fbfbfb);padding:16px;border-radius:10px}
+    .stats{display:flex;gap:12px;justify-content:space-between}
+    .stat{flex:1;text-align:center}
+    .stat h3{margin:0;font-size:18px}
+    .stat p{margin:4px 0 0;color:var(--muted);font-size:13px}
+
+    .grid{display:grid;grid-template-columns:1fr 360px;gap:22px}
+    .menu{background:var(--card);padding:18px;border-radius:var(--radius);box-shadow:0 8px 22px rgba(10,10,10,0.04)}
+    .menu h3{margin-top:0}
+    .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px}
+    .card{background:#fff;border-radius:10px;padding:12px;box-shadow:0 6px 14px rgba(0,0,0,0.04)}
+    .card img{width:100%;height:110px;border-radius:8px;object-fit:cover;margin-bottom:8px}
+    .card h4{margin:0 0 6px 0;font-size:15px}
+    .card p{margin:0;color:var(--muted);font-size:13px}
+
+    aside{background:var(--card);padding:18px;border-radius:var(--radius);box-shadow:0 8px 22px rgba(0,0,0,0.04)}
+
+    footer{margin-top:18px;text-align:center;color:var(--muted);font-size:13px}
+
+    /* responsive */
+    @media(max-width:900px){
+      .hero{grid-template-columns:1fr}
+      .grid{grid-template-columns:1fr}
+    }
+  </style>
+
+  <!-- ======================= JAVASCRIPT ======================= -->
+  <script>
+    // JS 01 - Hide/Show Menu
+    function toggleMenu(){
+      const menu=document.getElementById('menuNav');
+      menu.style.display = menu.style.display === 'none' ? 'flex' : 'none';
+    }
+
+    // JS 02 - Ganti background
+    function changeBackground(){
+      document.body.style.background = "#e8f9ef";
+    }
+
+    // JS 04 - Jam realtime
+    function startClock(){
+      setInterval(()=>{
+        document.getElementById('clock').innerText = new Date().toLocaleTimeString();
+      },1000);
+    }
+
+    // JS 08 - Alert Sambutan
+    function showWelcome(){
+      alert("Selamat datang di Warung DHA-DHA!");
+    }
+
+    // JS 10 - Konfirmasi form
+    function confirmOrder(){
+      return confirm("Apakah Anda yakin ingin mengirim pesanan?");
+    }
+  </script>
+</head>
+
+<body onload="startClock(); showWelcome()">
+  <div class="wrapper">
+    <header>
+      <div class="brand">
+        <div class="logo">DHA</div>
+        <div>
+          <h1>Warung DHA-DHA</h1>
+          <p>Rasa Tradisi — Sentuhan Kekinian</p>
+        </div>
+      </div>
+
+      <!-- NAVBAR LAMA (tidak dihapus), + Tambahan tombol + Jam -->
+      <nav id="menuNav">
+        <a href="#menu">Menu</a>
+        <a href="#about">Tentang</a>
+        <a href="#contact" class="cta">Pesan Sekarang</a>
+
+        <!-- ✨ JavaScript Buttons -->
+        <button onclick="toggleMenu()">Hide Menu</button>
+        <button onclick="changeBackground()">Ganti Background</button>
+        <div id="clock" style="font-weight:bold"></div>
+      </nav>
+    </header>
+
+    <section class="hero" id="home">
+      <div>
+        <h2>Warung DHA-DHA — Nikmati Masakan Rumahan Otentik</h2>
+        <p>Warung DHA-DHA menyajikan aneka makanan khas Yogyakarta dan Jawa Tengah dengan resep turun-temurun.</p>
+        <div class="btn-row">
+          <a class="btn primary" href="#menu">Lihat Menu</a>
+          <a class="btn ghost" href="#about">Tentang Kami</a>
+        </div>
+      </div>
+
+      <div class="hero-card">
+        <div class="stats">
+          <div class="stat"><h3>4.8</h3><p>Rating Pelanggan</p></div>
+          <div class="stat"><h3>20+</h3><p>Menu Khusus</p></div>
+          <div class="stat"><h3>10.000+</h3><p>Pelanggan Puas</p></div>
+        </div>
+      </div>
+    </section>
+
+    <div class="grid">
+      <main class="menu" id="menu">
+        <h3>Menu Unggulan</h3>
+        <div class="cards">
+          <article class="card">
+            <img src="C:\Users\nitrov16\Downloads\257689.jpg" alt="Gudeg Jogja">
+            <h4>Gudeg Komplit</h4>
+            <p>Gudeg khas Jogja lengkap dengan krecek dan ayam suwir.</p>
+          </article>
+          <article class="card">
+            <img src="C:\Users\nitrov16\Downloads\nasi-goreng-kencur-kemangi.jpg" alt="Nasi Goreng">
+            <h4>Nasi Goreng Spesial</h4>
+            <p>Dengan telur mata sapi dan kerupuk renyah.</p>
+          </article>
+          <article class="card">
+            <img src="C:\Users\nitrov16\Downloads\sate-ayam.jpg" alt="Sate Ayam">
+            <h4>Sate Ayam Madura</h4>
+            <p>Bumbu kacang kental dan lontong hangat.</p>
+          </article>
+          <article class="card">
+            <img src="C:\Users\nitrov16\Downloads\Ketahui-Fakta-Es-Teh-Manis.jpg" alt="Es Teh">
+            <h4>Es Teh Legenda</h4>
+            <p>Segar dan manis pas.</p>
+          </article>
+        </div>
+      </main>
+
+      <aside id="about">
+        <h3>Tentang Kami</h3>
+        <p>Warung DHA-DHA berdiri sejak 2018. Mengutamakan rasa autentik dan bahan segar.</p>
+      </aside>
+    </div>
+
+    <section id="contact" style="margin-top:16px;background:var(--card);padding:16px;border-radius:12px">
+      <h3>Hubungi Kami</h3>
+      <form onsubmit="return confirmOrder();">
+        <input required placeholder="Nama" style="padding:10px;border-radius:8px;border:1px solid #ddd"><br><br>
+        <input required placeholder="Nomor Telepon" style="padding:10px;border-radius:8px;border:1px solid #ddd"><br><br>
+        <textarea required placeholder="Pesanan" style="padding:10px;border-radius:8px;border:1px solid #ddd;height:90px"></textarea><br><br>
+        <button type="submit" class="btn primary">Kirim Pesan</button>
+      </form>
+    </section>
+
+    <footer>
+      © 2025 Warung DHA-DHA — Dibuat dengan ❤️
+    </footer>
+  </div>
+</body>
+</html>
